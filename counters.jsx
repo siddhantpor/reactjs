@@ -5,8 +5,8 @@ class Counters extends Component {
     state = { 
         counters: [
             {id: 1, value: 0},
-            {id: 2, value: 3},
-            {id: 3, value: 8},
+            {id: 2, value: 0},
+            {id: 3, value: 0},
             {id: 4, value: 0}
         ]
     } 
@@ -21,7 +21,7 @@ class Counters extends Component {
             c.value = 0;
             return c;
         })
-        this.setState({ coutners: counters })
+        this.setState({ counters })
     }
 
     handleIncrement = (counter) => {
@@ -29,7 +29,30 @@ class Counters extends Component {
         const index = counters.indexOf(counter);
         counters[index] = {...counter}
         counters[index].value++;
-        this.setState({counters : counters});
+        this.setState({counters: counters});
+    }
+
+    handleDecrement = (counter) => {
+        const counters = [...this.state.counters];
+        const index = counters.indexOf(counter);
+        counters[index] = {...counter}
+        if (counters[index].value >= 1) {
+            counters[index].value--;    
+        }
+        this.setState({counters: counters});
+    }
+
+    addNew = () => {
+        if (this.state.counters.length !== 0) {
+            const counters = [...this.state.counters];
+            const size = counters.length-1;
+            counters.push({id: counters[size].id + 1, value: 0});
+            this.setState({counters: counters})
+        }
+        else {
+            const counters = [{id: 1, value: 0}];
+            this.setState({counters});
+        }
     }
 
     render() { 
@@ -39,11 +62,16 @@ class Counters extends Component {
                     className="btn-primary btn-sm m-2"
                     onClick={this.handleReset}>      
                 Reset</button>
+                <button 
+                    className="btn-info btn-sm m-2"
+                    onClick={this.addNew}>
+                Add New</button>
                 {this.state.counters.map( counter => (
                     <Counter 
                         key = {counter.id} 
                         counter = {counter} 
                         onIncrement = {this.handleIncrement}
+                        onDecrement = {this.handleDecrement}
                         onDelete = {this.handleDelete} 
                     /> 
                 ))}

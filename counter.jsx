@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 class Counter extends Component {
 
     formatValue = () => {
-        const { value } = this.props.counter.value; 
-        return value === 0 ? 
-            'Zero' : value;
+        const val  = this.props.counter.value; 
+        return val === 0 ? 
+            'Zero' : val;
     }
 
     determineClass = () => {
@@ -18,10 +18,14 @@ class Counter extends Component {
         
         return (
             <div>
-                <span className={ this.determineClass() }>{ this.formatValue() }</span> 
+                <span className={ this.determineClass() }>{this.formatValue()}</span> 
                 <button 
                     onClick={ () => this.props.onIncrement(this.props.counter) }  
                     className="btn btn-sm btn-secondary m-2">Increment
+                </button>
+                <button 
+                    onClick={ () => this.props.onDecrement(this.props.counter) }  
+                    className="btn btn-sm btn-secondary m-2">Decrement
                 </button>
                 <button 
                     onClick={ () => this.props.onDelete(this.props.counter.id) } 
@@ -36,7 +40,7 @@ class Counter extends Component {
 export default Counter;
 
 
-// notes
+// notes from tutorial
 
 // babel cannot compile two elements side by side - wrap in a div
 // need to wrap return in parenthesis 

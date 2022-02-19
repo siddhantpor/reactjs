@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Counters from  './components/counters';
 
 ReactDOM.render(
-    <Counters />, document.getElementById("root")
+    <Counters />, document.getElementById("root") //sdfdsf
 );
 
 // If you want to start measuring performance in your app, pass a function
@@ -17,9 +17,10 @@ ReactDOM.render(
 reportWebVitals();
 
 
-// this imports the application
+// this imports the applications
 // this modifies the html root, hence it shows up nicely.
 
 // if something stupid not working, just brute force restart server (npm start) LOL
 
 // bootstrap makes it look pretty
+// LMAO LMLAHO
