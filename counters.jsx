@@ -66,6 +66,9 @@ class Counters extends Component {
                     className="btn-info btn-sm m-2"
                     onClick={this.addNew}>
                 Add New</button>
+                <span
+                    className="badge badge-success m-2">
+                {this.state.counters.length} Unique Items</span>
                 {this.state.counters.map( counter => (
                     <Counter 
                         key = {counter.id} 
